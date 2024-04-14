@@ -90,7 +90,7 @@ def create_payment(card_number_token, card_cvc_token):
         'card[exp_year]': '2024'
     }
     path_to_lib_ca = utils.DEFAULT_CA_BUNDLE_PATH 
-    path_to_vgs_ca = '/Users/victordmitirev/Desktop/VGS_demo_app/sanbox.pem' #CA certificate path
+    path_to_vgs_ca = 'sanbox.pem' #CA certificate path
 
     #CA certificate verification
     with tempfile.NamedTemporaryFile() as ca_file:
