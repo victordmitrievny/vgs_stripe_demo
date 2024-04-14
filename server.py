@@ -117,7 +117,7 @@ def payment_intent(payment_id):
     'Authorization': 'Bearer sk_test_51Lrs6CK6opjUgeSmFHReX14eBMcbofCJrUOisGTC7ASpkfFMqD6Eysbs83qBC12YZErV3nv1Pg4UTy9WRhPRVUpQ00o7cUrV8I' #Stripe AUTH key
     }
     payload = {
-      'amount': int(5.99 * 100),
+      'amount': 599,
       'currency': 'usd',
       'payment_method': payment_id,
       'confirm': 'true',
