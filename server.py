@@ -3,6 +3,8 @@ import requests
 from requests import utils
 import tempfile
 import os
+import logging
+logging.basicConfig(level=logging.INFO)
 
 #------------------------------------Launch server and execute functions-------------------------
 app = Flask(__name__)
@@ -32,6 +34,7 @@ def handle_request():
         print('*************')
         print(tok_data)
         print('*************')
+        logging.info("Data Tokenized")
 
         #Get Card number and Card cvc tokens
         card_number_token = tok_data['card_number']
@@ -42,6 +45,7 @@ def handle_request():
         if pm_json == None:
             return {"status": "payment failed - payment method"}
         print('*************')
+        logging.info("Payment Method Selection Success")
 
         #Get Payment ID
         payment_id = pm_json['id']
@@ -53,6 +57,7 @@ def handle_request():
         if pi_json == None:
             return {"status": "payment failed - payment intent"}
         print('*************')
+        logging.info("Payment Intent Success")
 
         #Get PI status
         pi_status = (pi_json['charges']['data'])[0]['status']
