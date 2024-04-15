@@ -16,7 +16,6 @@ Whenever users submit their payment card information, the client side uses VGS c
 That way, user's sensitive payment information never gets revealed or stored by the merchant. Then, the server submits tokenized data to Stripe's Create Payment endpoints through VGS outbound proxy which reveals it to the payment processor.
 Finally, the data is being posted to Stripe's Payment Intents API thus confirming the transaction and returning the status to the front-end.
 
-
 <br>
 <br>
 <br>
@@ -52,7 +51,6 @@ _**To use the app:**_ <br>
 1. Access the app's frontend and submit your payment information to it
 2. View logs in the VGS platform AND/OR
 3. View **server.py** terminal output to see the results of your submission
-
 
  <br>
  <br>
