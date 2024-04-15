@@ -43,12 +43,7 @@ _**How to run locally with ngrok:**_ <br>
    ```bash
    brew install ngrok/ngrok/ngrok
    ngrok config add-authtoken "your ngrok auth token"
-   ngrok http "your app local server URL"
-   ```
-7. Open your terminal and cd to the directory where Ngrok is installed.
-8. Run the following command to start Ngrok and create a tunnel to your local app:
-   ```bash
-   ngrok http "your port number"
+   ngrok http "your app's port number"
    ```
 
 _**To set up your VGS configurations:**_ <br>
