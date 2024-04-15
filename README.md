@@ -21,29 +21,30 @@ Finally, the data is being posted to Stripe's Payment Intents API thus confirmin
 
 _**To run locally:**_ <br>
 
-1. accept invitation to my VGS account
-2. clone app to your repository:
+1. Accept invitation to my VGS account
+2. Clone the app files to your repository:
    ```bash
    git clone https://github.com/victordmitrievny/vgs_demo_app/edit/master
    ```
-3. install requirements:
+3. Install requirements:
      ```bash
      pip install requirements.txt
      ```
-3. launch **server.py** file
-4. download and install ngrok
-5. run the following command to start Ngrok and create a tunnel to your local app:
+3. Launch **server.py** file
+4. Download and install ngrok
+5. Run the following command to start Ngrok and create a tunnel to your local app:
    ```bash
    ngrok http your_port_number
    ```
-7. currently my VGS inbound proxy is configured to pass the form data to the app deployed on Heroku. Change **bobs hamburger - inbound route** Upstream host URL to your ngrok URL.
+7. Currently my VGS inbound proxy is configured to pass the form data to the app deployed on Heroku. Change **bobs hamburger - inbound route** Upstream host URL to your ngrok URL.
 
     <img width="450" alt="Screenshot 2024-04-15 at 2 40 12 AM" src="https://github.com/victordmitrievny/vgs_demo_app/assets/125769590/1f5bf31d-d067-4d8a-a5ee-42113f245ab2">
 
 
 
-9. access the app's frontend and submit your payment information to it.
-10. view logs in VGS platform or **server.py** terminal output to see the results of your submission
+9. Access the app's frontend and submit your payment information to it.
+10. View logs in the VGS platform AND/OR
+11. View **server.py** terminal output to see the results of your submission
 
 
 
