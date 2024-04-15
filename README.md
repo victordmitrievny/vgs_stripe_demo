@@ -44,6 +44,7 @@ _**How to run locally with ngrok:**_ <br>
 6. Confirm that both _server.py_ and your ngrok are running and configured correctly  <br>
  <br>
  <br>
+ <br>
  
 _**To set up your VGS configurations:**_ <br>
 
@@ -54,8 +55,7 @@ _**To set up your VGS configurations:**_ <br>
 
    <img width="450" alt="Screenshot 2024-04-15 at 2 40 12 AM" src="https://github.com/victordmitrievny/vgs_demo_app/assets/125769590/1f5bf31d-d067-4d8a-a5ee-42113f245ab2">  <br>
     <br>
-    <br>
-    
+
 <ins>_If accessing your own VSG sandbox:_ </ins> <br>
 1. Navite to "routes" in your vault's administration panel <br>
 2. Select "manage" -> "import Yaml file" and import **config.yaml** attached to this project <br>
