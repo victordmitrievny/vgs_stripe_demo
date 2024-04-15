@@ -30,8 +30,8 @@ _**To run locally:**_ <br>
      ```bash
      pip install requirements.txt
      ```
-3. download and install ngrok
-4. launch **server.py** file
+3. launch **server.py** file
+4. download and install ngrok
 5. run the following command to start Ngrok and create a tunnel to your local app:
    ```bash
    ngrok http your_port_number
