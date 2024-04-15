@@ -21,9 +21,11 @@ Finally, the data is being posted to Stripe's Payment Intents API thus confirmin
 <br>
 
 <p align="center">
-   _**How to Launch, Configure VGS and Use**_ 
-     <br>
+   **How to Launch, Configure VGS and Use**
+    
 </p>
+
+**sdasd**
 
 _**How to run locally with ngrok:**_ <br>
 
