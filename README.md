@@ -70,5 +70,6 @@ _**To use the app:**_ <br>
 -styles.css - CSS styles <br>
 -server.py - collection of tokenized data, posting through VGS outbound proxy to Payment Methods and then to Payment Intent<br>
 -images - images for the HTML page <br>
--Procfile, requirements.txt - supplemental files needed for Heroku deployment <br>
+-requirements.txt - dependencies <br>
+-Procfile - needed for Heorku deployment
  
