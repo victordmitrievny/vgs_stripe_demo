@@ -20,10 +20,7 @@ Finally, the data is being posted to Stripe's Payment Intents API thus confirmin
 <br>
 <br>
 
-<p align="center">
-   How to Launch, Configure VGS and Use:
-    
-</p>
+**<p align="center">How to Launch, Configure VGS and Use:</p>**
 
 
 _**How to run locally with ngrok:**_ <br>
@@ -65,10 +62,7 @@ _**To use the app:**_ <br>
  <br>
  <br>
 
- <p align="center">
-Files Summary: <br>
-      <br>
-</p>
+**<p align="center"> Files Summary: </p>**
 
 -form.js - Front-end generation, animations and communication with the VGS inbound proxy <br>
 -index.html - Form page <br>
