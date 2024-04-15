@@ -14,7 +14,9 @@ _**To run locally:**_ <br>
 
 1. accept invitation to my VGS account
 1. git clone https://github.com/victordmitrievny/vgs_demo_app/edit/master
-2. pip install requirements.txt
+2. ```bash
+pip install requirements.txt
+```
 3. download and install ngrok
 4. launch **server.py** file
 5. run the following command to start Ngrok and create a tunnel to your local app:
