@@ -14,7 +14,8 @@ _**To run locally:**_ <br>
 
 1. accept invitation to my VGS account
 1. git clone https://github.com/victordmitrievny/vgs_demo_app/edit/master
-2. ```bash
+2.
+```bash
 pip install requirements.txt
 ```
 3. download and install ngrok
