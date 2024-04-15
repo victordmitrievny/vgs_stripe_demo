@@ -17,7 +17,9 @@ That way, user's sensitive payment information never gets revealed or stored by 
 Finally, the data is being posted to Stripe's Payment Intents API thus confirming the transaction and returning the status to the front-end.
 
 
-
+<br>
+<br>
+<br>
 
 _**How to run locally with ngrok:**_ <br>
 
@@ -50,7 +52,9 @@ _**To use the app:**_ <br>
 3. View **server.py** terminal output to see the results of your submission
 
 
- 
+ <br>
+ <br>
+ <br>
 _**Files Summary:**_ <br>
 
 -form.js - Front-end generation, animations and communication with the VGS inbound proxy <br>
