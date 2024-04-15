@@ -1,8 +1,4 @@
-<style>
-    img {
-        margin-left: 20px;
-    }
-</style>
+
 
 
 <p align="center">
@@ -35,12 +31,13 @@ _**To run locally:**_ <br>
    ngrok http your_port_number
    ```
 7. currently my VGS inbound proxy is configured to pass the form data to the app deployed on Heroku. Change **bobs hamburger - inbound route** Upstream host URL to your ngrok URL.
-<img width="450" alt="Screenshot 2024-04-15 at 2 40 12 AM" src="https://github.com/victordmitrievny/vgs_demo_app/assets/125769590/1f5bf31d-d067-4d8a-a5ee-42113f245ab2">
+
+    <img width="450" alt="Screenshot 2024-04-15 at 2 40 12 AM" src="https://github.com/victordmitrievny/vgs_demo_app/assets/125769590/1f5bf31d-d067-4d8a-a5ee-42113f245ab2">
 
 
 
-8. access the app's frontend and submit your payment information to it.
-9. view **server.py** terminal output to see the results of your submission
+9. access the app's frontend and submit your payment information to it.
+10. view **server.py** terminal output to see the results of your submission
  
 _**Files Summary:**_ <br>
 
