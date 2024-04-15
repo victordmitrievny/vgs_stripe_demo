@@ -43,7 +43,7 @@ _**To run locally:**_ <br>
 
 
 9. access the app's frontend and submit your payment information to it.
-10. view **server.py** terminal output to see the results of your submission
+10. view logs in VGS platform or **server.py** terminal output to see the results of your submission
 
 
 
