@@ -19,7 +19,7 @@ Finally, the data is being posted to Stripe's Payment Intents API thus confirmin
 
 
 
-_**To run locally:**_ <br>
+_**To run locally with ngrok:**_ <br>
 
 1. Accept invitation to my VGS account
 2. Clone the app files to your repository:
