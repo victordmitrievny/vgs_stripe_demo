@@ -41,15 +41,20 @@ _**How to run locally with ngrok:**_ <br>
    ngrok config add-authtoken "your ngrok auth token"
    ngrok http "apps port number"
    ```
-6. Confirm that both _server.py_ and your ngrok are running and configured correctly
-
+6. Confirm that both _server.py_ and your ngrok are running and configured correctly  <br>
+ <br>
+ <br>
+ 
 _**To set up your VGS configurations:**_ <br>
 
-1. Accept invitation to my VGS account
-2. Log into our shared VGS sandbox
-3. Currently my VGS inbound proxy is configured to pass the form data to the app deployed on Heroku. Change "bobs hamburger - inbound route" upstream host URL to your ngrok URL: <br>
+<ins>_If accessing the sandbox from the invite:_ </ins> <br>
+1a. Accept invitation to my VGS sandbox <br>
+2b. Log into our shared VGS sandbox <br>
+3c. Currently my VGS inbound proxy is configured to pass the form data to the app deployed on Heroku. Change "bobs hamburger - inbound route" upstream host URL to your ngrok URL: <br>
 
-   <img width="450" alt="Screenshot 2024-04-15 at 2 40 12 AM" src="https://github.com/victordmitrievny/vgs_demo_app/assets/125769590/1f5bf31d-d067-4d8a-a5ee-42113f245ab2"> 
+   <img width="450" alt="Screenshot 2024-04-15 at 2 40 12 AM" src="https://github.com/victordmitrievny/vgs_demo_app/assets/125769590/1f5bf31d-d067-4d8a-a5ee-42113f245ab2">  <br>
+    <br>
+    <br>
 
 
 _**To use the app:**_ <br>
