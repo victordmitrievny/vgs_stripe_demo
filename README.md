@@ -6,12 +6,17 @@
    https://bobham-774de8219399.herokuapp.com/
 </p>
 
+
+
+
 _**Description:**_
 
 Bob's Hamburger is a demo app designed to highgligh secure payment processing through VGS data security platform (https://www.verygoodsecurity.com/). 
 Whenever users submit their payment card information, the client side uses VGS collect library to securely post the form data to VGS inbound proxy, which tokenizes card number and cvc before passing it to the app's server side.
 That way, user's sensitive payment information never gets revealed or stored by the merchant. Then, the server submits tokenized data to Stripe's Create Payment endpoints through VGS outbound proxy which reveals it to the payment processor.
 Finally, the data is being posted to Stripe's Payment Intents API thus confirming the transaction and returning the status to the front-end.
+
+
 
 
 _**To run locally:**_ <br>
@@ -39,6 +44,8 @@ _**To run locally:**_ <br>
 
 9. access the app's frontend and submit your payment information to it.
 10. view **server.py** terminal output to see the results of your submission
+
+
 
  
 _**Files Summary:**_ <br>
