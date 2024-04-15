@@ -55,7 +55,9 @@ _**To set up your VGS configurations:**_ <br>
 _**To use the app:**_ <br>
 1. Access the app's frontend and submit your payment information to it
 2. View logs in the VGS platform AND/OR
-3. View **server.py** terminal output to see the results of your submission
+   <img width="450" alt="Screenshot 2024-04-15 at 10 06 03 PM" src="https://github.com/victordmitrievny/vgs_demo_app/assets/125769590/dad6825e-0428-4ad1-8b67-634108dbb053">
+
+4. View **server.py** terminal output to see the results of your submission
 
  <br>
  <br>
