@@ -2,7 +2,7 @@
 
 
 <p align="center">
-     THE PROJECT IS DEPLOYED ON:  <br>
+     The project is deployed on:  <br>
    https://bobham-774de8219399.herokuapp.com/
 </p>
 
@@ -21,7 +21,7 @@ Finally, the data is being posted to Stripe's Payment Intents API thus confirmin
 <br>
 
 <p align="center">
-   **How to Launch, Configure VGS and Use**
+   How to Launch, Configure VGS and Use
     
 </p>
 
