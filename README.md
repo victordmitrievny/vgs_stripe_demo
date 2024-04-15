@@ -50,7 +50,7 @@ _**To run locally:**_ <br>
  
 _**Files Summary:**_ <br>
 
--form.js - Front-end generation, animations and communication with the backend <br>
+-form.js - Front-end generation, animations and communication with the VGS inbound proxy <br>
 -index.html - Form page <br>
 -payment-failure.html - Page generated when payment failed <br>
 -payment-success.html - Page generated when payment went through successfully <br>
