@@ -39,7 +39,7 @@ _**How to run locally with ngrok:**_ <br>
      ```
 3. Launch _server.py_ file in your IDE
 4. Create an account on [ngrok](https://ngrok.com/)
-5. Install, launch and configure ngrok by following instructions on the website or by running the following commands:
+5. Install, launch and configure ngrok by following instructions on their website or by running the following commands:
    ```bash
    brew install ngrok/ngrok/ngrok
    ngrok config add-authtoken "your ngrok auth token"
