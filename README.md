@@ -63,7 +63,8 @@ _**To use the app:**_ <br>
  <br>
 
  <p align="center">
-_**Files Summary:**_ <br>
+Files Summary: <br>
+      <br>
 </p>
 
 -form.js - Front-end generation, animations and communication with the VGS inbound proxy <br>
