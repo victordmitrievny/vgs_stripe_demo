@@ -21,8 +21,10 @@ Finally, the data is being posted to Stripe's Payment Intents API thus confirmin
 <br>
 
 <p align="center">
-    ** How to Launch, Configure VGS and Use**  <br>
+   _**How to Launch, Configure VGS and Use**_ 
+     <br>
 </p>
+
 _**How to run locally with ngrok:**_ <br>
 
 1. Clone the app files to your own local repository:
