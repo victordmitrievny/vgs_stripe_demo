@@ -30,7 +30,6 @@ _**How to run locally with ngrok:**_ <br>
 
 1. Clone the app files to your own local repository:
    ```bash
-   cd "your local repository"
    git clone https://github.com/victordmitrievny/vgs_demo_app/
    ```
 2. Install requirements:
