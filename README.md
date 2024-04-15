@@ -20,6 +20,10 @@ Finally, the data is being posted to Stripe's Payment Intents API thus confirmin
 <br>
 <br>
 
+<p align="center">
+     How to Launch, Configure VGS and Use  <br>
+   https://bobham-774de8219399.herokuapp.com/
+</p>
 _**How to run locally with ngrok:**_ <br>
 
 1. Clone the app files to your own local repository:
