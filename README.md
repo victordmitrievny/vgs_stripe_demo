@@ -38,9 +38,15 @@ _**How to run locally with ngrok:**_ <br>
      pip install -r requirements.txt
      ```
 3. Launch _server.py_ file in your IDE
-4. Download and install [ngrok](https://ngrok.com/)
-5. Open your terminal and cd to the directory where Ngrok is installed.
-6. Run the following command to start Ngrok and create a tunnel to your local app:
+4. Create an account on [ngrok](https://ngrok.com/)
+5. Install, launch and configure ngrok by following instructions on the website or by running the following commands:
+   ```bash
+   brew install ngrok/ngrok/ngrok
+   ngrok config add-authtoken "your ngrok auth token"
+   ngrok http "your app local server URL"
+   ```
+7. Open your terminal and cd to the directory where Ngrok is installed.
+8. Run the following command to start Ngrok and create a tunnel to your local app:
    ```bash
    ngrok http "your port number"
    ```
