@@ -37,7 +37,7 @@ _**How to run locally with ngrok:**_ <br>
      ```bash
      pip install -r requirements.txt
      ```
-3. Launch _server.py_ file
+3. Launch _server.py_ file in your IDE
 4. Download and install [ngrok](https://ngrok.com/)
 5. Run the following command to start Ngrok and create a tunnel to your local app:
    ```bash
