@@ -35,7 +35,7 @@ _**How to run locally with ngrok:**_ <br>
    ```
 2. Install requirements:
      ```bash
-     pip install requirements.txt
+     pip install -r requirements.txt
      ```
 3. Launch _server.py_ file
 4. Download and install [ngrok](https://ngrok.com/)
