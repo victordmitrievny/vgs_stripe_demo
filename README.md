@@ -39,7 +39,7 @@ _**How to run locally with ngrok:**_ <br>
    ```bash
    brew install ngrok/ngrok/ngrok
    ngrok config add-authtoken "your ngrok auth token"
-   ngrok http "your apps port number"
+   ngrok http "apps port number"
    ```
 6. Confirm that both _server.py_ and your ngrok are running and configured correctly
 
