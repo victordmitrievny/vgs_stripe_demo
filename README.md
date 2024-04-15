@@ -10,12 +10,19 @@ Whenever users submit their payment card information, the client side uses VGS c
 That way, user's sensitive payment information never gets revealed or stored by the merchant. Then, the server submits tokenized data to Stripe's Create Payment endpoints through VGS outbound proxy which reveals it to the payment processor.
 Finally, the data is being posted to Stripe's Payment Intents API thus confirming the transaction and returning the status to the front-end.
 
+_**To run locally:**_ <br>
 
-Some of the main libraries used are: <br>
--VGS collect <br>
--Flask <br>
-
-The project is deployed on Heroku.
+1. accept invitation to my VGS account
+1. git clone https://github.com/victordmitrievny/vgs_demo_app/edit/master
+2. pip install requirements.txt
+3. download and install ngrok
+4. launch **server.py** file
+5. run the following command to start Ngrok and create a tunnel to your local app:
+   '''ngrok http your_port_number'''
+6. currently my VGS inbound proxy is configured to pass the form data to the app deployed on Heroku. Change **bobs hamburger - inbound route** Upstream host URL to your ngrok URL.
+<img width="863" alt="Screenshot 2024-04-15 at 2 38 01 AM" src="https://github.com/victordmitrievny/vgs_demo_app/assets/125769590/2a393e48-5c8d-43d0-b990-260523f25d43">
+7. access the app's frontend and submit your payment information to it.
+8. view **server.py** to see the results of your submission
  
 _**Files Summary:**_ <br>
 
@@ -27,26 +34,4 @@ _**Files Summary:**_ <br>
 -server.py - collection of tokenized data, posting through VGS outbound proxy to Payment Methods and then to Payment Intent<br>
 -images - images for the HTML page <br>
 -Procfile, requirements.txt - supplemental files needed for Heroku deployment <br>
-
-
-To start the program:
-
-1. Pip install requirements.txt
-2. Launch **server.py** 
-
-_**Methodology Breakdown:**_
-
-1. The program starts with Python server launch
-2. Using HTML and CSS, the program generates basic page layout, its elements, text and the upload button
-3. Javascript listens to the image-upload event and passes it to the backend
-4. Using Python, the program receives the picture on the back-end
-5. Using Tesseract OCR, given the image is in the right format, the program converts the image to a text string
-6. The program then formats the text string to make ingredients identification process easier
-7. The program then identifies each ingredient by splitting the formatted text string by commas (",") and writes each ingredient in a list of dictionaries
-8. The program checks each of the ingredients present in the dictionary against the ingredients present in the SQL database
-9. If there is a match, the program generates a dynamic HTML table in Python, and adds the matched ingredient, its category and its effect to a new row
-10. The process repeats until the algorithm goes through all of the dictionary ingredients
-11. The program passes the resulting HTML table back to Javascript on the front-end
-12. Javascript generates the table passed from the back-end and updates the overall HTML layout and CSS styles
-
-13.* The program is then deployed on Heroku, alongside the SQL database created for this project
+ 
