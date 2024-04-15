@@ -1,6 +1,6 @@
 <p align="center">
      THE PROJECT IS DEPLOYED ONLINE AT:  <br>
-   https://bobham-774de8219399.herokuapp.com/payment-success
+   https://bobham-774de8219399.herokuapp.com/
 </p>
 
 _**Description:**_
