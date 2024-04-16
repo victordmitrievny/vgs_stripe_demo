@@ -49,8 +49,8 @@ _**How to run locally with ngrok:**_ <br>
 _**To set up your VGS configurations:**_ <br>
 
 <ins>_If accessing our shared sandbox **(recommended)**:_ </ins> <br>
-1. Accept invitation to my VGS sandbox <br>
-2. Log into our shared VGS sandbox <br>
+1. Log into our shared VGS sandbox <br>
+2. Navite to "routes" in your vault's administration panel
 3. Change "bobs hamburger - inbound route" upstream host URL to your ngrok URL. Currently my VGS inbound proxy is configured to pass the form data to the app deployed on Heroku. <br>
 
    <img width="450" alt="Screenshot 2024-04-15 at 2 40 12 AM" src="https://github.com/victordmitrievny/vgs_demo_app/assets/125769590/1f5bf31d-d067-4d8a-a5ee-42113f245ab2">  <br>
