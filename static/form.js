@@ -1,6 +1,6 @@
 // Define VGS form submission using VGScollect library
 const vgsForm = window.VGSCollect.create(
-  'tntamsjq33t',
+  'tntza86paji',
   'sandbox', 
   (state) => {}).setRouteId('');
 

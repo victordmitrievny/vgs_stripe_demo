@@ -5,9 +5,9 @@ from flask import Flask, request, render_template
 import requests
 from requests import utils
 
-VGS_USERNAME = 'USmWgaETK73AQjt7x6FJPj5f'
-VGS_PASSWORD = '61276cc8-5262-4bcc-8ec6-ffce3096228a'
-VGS_URL = 'tntamsjq33t.sandbox.verygoodproxy.com:8443'
+VGS_USERNAME = 'US27PigaLSyK4DzmUmBqrLWx'
+VGS_PASSWORD = '00c2d428-7849-4fd2-9c29-5b656cd5c26c'
+VGS_URL = 'tntza86paji.sandbox.verygoodproxy.com:8443'
 PATH_TO_VGS_CA = 'sanbox.pem'
 
 STRIPE_URL = 'https://api.stripe.com/v1/'
