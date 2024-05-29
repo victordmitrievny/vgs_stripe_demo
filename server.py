@@ -1,24 +1,26 @@
 import os
 import tempfile
+import json
 
 from flask import Flask, request, render_template
 import requests
 from requests import utils
 
-VGS_USERNAME = 'US27PigaLSyK4DzmUmBqrLWx'
-VGS_PASSWORD = '00c2d428-7849-4fd2-9c29-5b656cd5c26c'
-VGS_URL = 'tntza86paji.sandbox.verygoodproxy.com:8443'
+VGS_USERNAME = 'USuVkW3aDtuwUjP8qceWChNk'
+VGS_PASSWORD = '8d9dfa49-a27d-4743-8ec8-dae41dc9c55a'
+VGS_URL = 'tnt491nnxg5.sandbox.verygoodproxy.com:8443'
 PATH_TO_VGS_CA = 'sanbox.pem'
 
-STRIPE_URL = 'https://api.stripe.com/v1/'
-STRIPE_TOKEN = 'sk_test_51Lrs6CK6opjUgeSmFHReX14eBMcbofCJrUOisGTC7ASpkfFMqD' \
-               '6Eysbs83qBC12YZErV3nv1Pg4UTy9WRhPRVUpQ00o7cUrV8I'
+ADYEN_URL = 'https://checkout-test.adyen.com/v69/payments'
+ADYEN_TOKEN = 'AQEvhmfxLILLbhVBw0m/n3Q5qf3Vfqx+LJBJV3BY0iz+yBivhNy8xr1xXEUHUerpyiMQwV1bDb7kfNy1WIxI' \
+              'IkxgBw==-ANcH4ZSDzkrUIeDd75VCGpsc3qgyBJb6p3erPRRm1Rg=-IY4t>x~L{nqG3nhZ'
 
 DEBUG = True
 
 app = Flask(__name__)
 
 
+#----------Client -----------
 # Payment Form
 @app.route("/")
 def payment_form():
@@ -37,6 +39,7 @@ def failure_page():
     return render_template('payment-failure.html')
 
 
+#---------Server-----------
 # Launch Server
 @app.route('/post', methods=['POST'])
 def handle_request():
@@ -44,49 +47,101 @@ def handle_request():
         if DEBUG:
             print(f'request data:', request.json)
 
-        # Get Card number and Card cvc tokens
+
+        # Get Card Number and Exp dates tokens
+        card_holder = request.json['card_holder']
         card_number_token = request.json['card_number']
-        card_cvc_token = request.json['card_cvc']
+        card_exp_month = request.json['card_exp'].split(' / ')[0]
+        card_exp_year = request.json['card_exp'].split(' / ')[1]
 
-        # Execute Create Payment through VGS Outbound Proxy
-        payment = create_payment(card_number_token, card_cvc_token)
-        if not payment:
-            return {"status": "payment failed - payment method"}
 
-        # Execute Payment Intent
-        intent = payment_intent(payment['id'])
-        if not intent:
-            return {"status": "payment failed - payment intent"}
+        #Generate Service Account Access Token:
+        sa_token = generate_sa_token()
 
-        # Get PI status
-        intent_status = intent['charges']['data'][0]['status']
-        if DEBUG:
-            print(f'payment_intent status:', intent_status)
-        return {"status": intent_status}
+        print(card_holder)
+        print(card_number_token)
+        print(card_exp_month)
+        print(card_exp_year)
+        print(sa_token)
+
+        #Enroll Network Token:
+        network_token = enroll_network_token(card_number_token, card_exp_month, card_exp_year, sa_token)
+        if not network_token:
+            return {"status": "payment failed - network token enrollment"}
+
+        #Post Payment to Adyen:
+        process_payment = post_to_adyen(card_number_token, card_exp_month, card_exp_year, card_holder)
+        if not process_payment:
+            return {"status": "payment failed - process payment with Adyen"}
+
+        return {"status": process_payment['resultCode']}
     else:
         return 'Unsupported HTTP method'
 
 
-# File Read Function
-def read_file(path):
-    with open(path, mode='rb') as file:
-        return file.read()
+#Generate Service Account Access Token
+def generate_sa_token():
+    url = "https://auth.verygoodsecurity.com/auth/realms/vgs/protocol/openid-connect/token"
+    payload = {
+        "client_id": 'AC7tw1TUX-NTDemo-IF744',
+        "client_secret": '2e4ba720-d176-4252-a8c7-0541628cc49a',
+        "grant_type": "client_credentials"
+    }
+    response = requests.post(url, data=payload)
+    sa_token = response.json()["access_token"]
+    return sa_token
+    
 
 
-# Create Payment Method
-def create_payment(card_number_token, card_cvc_token):
+#Enroll card in a Network Token
+def enroll_network_token(card_number_token, card_exp_month, card_exp_year, sa_token):
+    url = "https://calm.sandbox.verygoodsecurity.app/network-tokens"
     proxy = {'https': f'https://{VGS_USERNAME}:{VGS_PASSWORD}@{VGS_URL}'}
     headers = {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': f'Bearer {STRIPE_TOKEN}'
+        "Content-Type": "application/json",
+        "Calm-Merchant": "MCnGfwfoiZMu8g4PgCnK81WS",
+        "Authorization": f"Bearer {sa_token}"
     }
     payload = {
-        'type': 'card',
-        'card[number]': card_number_token,
-        'card[cvc]': card_cvc_token,
-        'card[exp_month]': '12',
-        'card[exp_year]': '2024'
+        "pan_alias": card_number_token,
+        "exp_month": card_exp_month,
+        "exp_year": card_exp_year
     }
+    
+    return post_request(url, headers, payload, proxy)
+
+
+# Post Payment to Adyen
+def post_to_adyen(card_number_token, card_exp_month, card_exp_year, card_holder):
+
+    url = ADYEN_URL
+    proxy = {'https': f'https://{VGS_USERNAME}:{VGS_PASSWORD}@{VGS_URL}'}
+    headers = {
+        "X-API-key": ADYEN_TOKEN,
+        "vgs-network-token": "yes"}
+
+    payload = {
+            "amount":{
+                "currency": "USD",
+                "value": 1000
+                },
+            "reference": "12345678",
+            "paymentMethod":{
+                "type": "scheme",
+                "number": card_number_token,
+                "expiryMonth": card_exp_month,
+                "expiryYear": card_exp_year,
+                "cvc": "123",
+                "holderName": card_holder
+            },
+            "merchantAccount": "VGSAccount456ECOM"
+        }
+    
+    return post_request(url, headers, payload, proxy)
+
+
+#Exec Post request
+def post_request(url, headers, payload, proxy):
     path_to_lib_ca = utils.DEFAULT_CA_BUNDLE_PATH
     with tempfile.NamedTemporaryFile() as ca_file:
         ca_file.write(read_file(PATH_TO_VGS_CA))
@@ -94,41 +149,32 @@ def create_payment(card_number_token, card_cvc_token):
         ca_file.write(read_file(path_to_lib_ca))
         read_file(ca_file.name)
         try:
-            response = requests.post(
-                f'{STRIPE_URL}payment_methods', data=payload, headers=headers, proxies=proxy, verify=ca_file.name
-            )
+
+            response = requests.post(url, 
+                                    headers = headers, 
+                                    json = payload, 
+                                    proxies = proxy,
+                                    verify=ca_file.name
+                                    )
             response.raise_for_status()
-            print("create_payment successful")
-            if DEBUG:
-                print('Response:', response.json())
+
+            # Prettify and print the response
+            parsed_json = json.loads(response.text)
+            formatted_json = json.dumps(parsed_json, indent=4)
+            print(formatted_json)
             return response.json()
+        
         except requests.exceptions.RequestException as e:
             print('create_payment failed', e)
+            return 
 
 
-# Execute Payment Intent
-def payment_intent(payment_id):
-    headers = {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': f'Bearer {STRIPE_TOKEN}'
-    }
-    payload = {
-        'amount': 599,
-        'currency': 'usd',
-        'payment_method': payment_id,
-        'confirm': 'true',
-        'return_url': 'https://example.com/return'
-    }
-
-    try:
-        response = requests.post(f'{STRIPE_URL}payment_intents', headers=headers, data=payload)
-        response.raise_for_status()
-        print("payment_intent successful")
-        if DEBUG:
-            print('Response:', response.json())
-        return response.json()
-    except requests.exceptions.RequestException as e:
-        print('payment_intent failed', e)
+#--------Misc----------
+# File Read Function
+def read_file(path):
+    with open(path, mode='rb') as file:
+        return file.read()
+#----------------------
 
 
 if __name__ == '__main__':

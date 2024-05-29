@@ -1,6 +1,6 @@
 // Define VGS form submission using VGScollect library
 const vgsForm = window.VGSCollect.create(
-  'tntza86paji',
+  'tnt491nnxg5',
   'sandbox', 
   (state) => {}).setRouteId('');
 
@@ -54,7 +54,7 @@ const submitVGSCollectForm = () => {
   vgsForm.submit('/post', {}, (status, data) => {
     if (status >= 200 && status <= 300) {
       // Redirect to a new page based on the response status
-      if (data.status === 'succeeded') { 
+      if (data.status === 'Authorised') { 
         window.location.href = '/payment-success';
       } else {
         window.location.href = '/payment-failure';
