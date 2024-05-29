@@ -1,19 +1,22 @@
 import os
 import tempfile
 import json
+from dotenv import load_dotenv
 
 from flask import Flask, request, render_template
 import requests
 from requests import utils
 
-VGS_USERNAME = 'USuVkW3aDtuwUjP8qceWChNk'
-VGS_PASSWORD = '8d9dfa49-a27d-4743-8ec8-dae41dc9c55a'
-VGS_URL = 'tnt491nnxg5.sandbox.verygoodproxy.com:8443'
-PATH_TO_VGS_CA = 'sanbox.pem'
+load_dotenv()
 
-ADYEN_URL = 'https://checkout-test.adyen.com/v69/payments'
-ADYEN_TOKEN = 'AQEvhmfxLILLbhVBw0m/n3Q5qf3Vfqx+LJBJV3BY0iz+yBivhNy8xr1xXEUHUerpyiMQwV1bDb7kfNy1WIxI' \
-              'IkxgBw==-ANcH4ZSDzkrUIeDd75VCGpsc3qgyBJb6p3erPRRm1Rg=-IY4t>x~L{nqG3nhZ'
+VGS_USERNAME = os.getenv('VGS_USERNAME')
+VGS_PASSWORD = os.getenv('VGS_PASSWORD')
+VGS_URL = os.getenv('VGS_URL')
+SA_CLIENT_ID = os.getenv('SA_CLIENT_ID')
+SA_CLIENT_SECRET = os.getenv('SA_CLIENT_SECRET')
+PATH_TO_VGS_CA = os.getenv('PATH_TO_VGS_CA')
+ADYEN_TOKEN = os.getenv('ADYEN_TOKEN')
+ADYEN_URL= 'https://checkout-test.adyen.com/v69/payments'
 
 DEBUG = True
 
@@ -83,8 +86,8 @@ def handle_request():
 def generate_sa_token():
     url = "https://auth.verygoodsecurity.com/auth/realms/vgs/protocol/openid-connect/token"
     payload = {
-        "client_id": 'AC7tw1TUX-NTDemo-IF744',
-        "client_secret": '2e4ba720-d176-4252-a8c7-0541628cc49a',
+        "client_id": SA_CLIENT_ID,
+        "client_secret": SA_CLIENT_SECRET,
         "grant_type": "client_credentials"
     }
     response = requests.post(url, data=payload)
