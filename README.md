@@ -3,7 +3,8 @@
 
 **<p align="center">
      The project is deployed on:  <br>
-   https://bobham-774de8219399.herokuapp.com/ (currently not available, under maintenance)</p>**
+   https://bobham-774de8219399.herokuapp.com/  <br>
+   (not available until Nov 5th 2025, under maintenance)</p>**
 
 
 
